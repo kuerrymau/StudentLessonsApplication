@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LessonsCreateDlg" widgetVar="LessonsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLessonsTitle}">
+            <h:form id="LessonsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lessonsController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLessonsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{lessonsController.selected.id}" title="#{bundle.CreateLessonsTitle_id}" required="true" requiredMessage="#{bundle.CreateLessonsRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateLessonsLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{lessonsController.selected.name}" title="#{bundle.CreateLessonsTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateLessonsLabel_faculty}" for="faculty" />
+                        <p:inputText id="faculty" value="#{lessonsController.selected.faculty}" title="#{bundle.CreateLessonsTitle_faculty}" />
+                        <p:outputLabel value="#{bundle.CreateLessonsLabel_totalnoofstudentss}" for="totalnoofstudentss" />
+                        <p:inputText id="totalnoofstudentss" value="#{lessonsController.selected.totalnoofstudentss}" title="#{bundle.CreateLessonsTitle_totalnoofstudentss}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{lessonsController.create}" value="#{bundle.Save}" update="display,:LessonsListForm:datalist,:growl" oncomplete="handleSubmit(args,'LessonsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LessonsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
