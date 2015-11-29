@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LessonsViewDlg" widgetVar="LessonsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLessonsTitle}">
+            <h:form id="LessonsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lessonsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLessonsLabel_id}"/>
+                        <h:outputText value="#{lessonsController.selected.id}" title="#{bundle.ViewLessonsTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewLessonsLabel_name}"/>
+                        <h:outputText value="#{lessonsController.selected.name}" title="#{bundle.ViewLessonsTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewLessonsLabel_faculty}"/>
+                        <h:outputText value="#{lessonsController.selected.faculty}" title="#{bundle.ViewLessonsTitle_faculty}"/>
+                        <h:outputText value="#{bundle.ViewLessonsLabel_totalnoofstudentss}"/>
+                        <h:outputText value="#{lessonsController.selected.totalnoofstudentss}" title="#{bundle.ViewLessonsTitle_totalnoofstudentss}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LessonsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
